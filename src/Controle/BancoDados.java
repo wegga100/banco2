@@ -11,8 +11,10 @@ import javax.swing.JOptionPane;
 
 import Model.Cliente;
 import Model.Empregado;
+import Model.Pedido;
 import Model.Produtos;
 import Model.Seccao;
+import Model.Venda;
 
 public class BancoDados {
 
@@ -69,7 +71,6 @@ public class BancoDados {
 		
 	}	
 	
-
 	
 	public void gravarProdutos(Produtos prod){
 		
@@ -87,13 +88,41 @@ public class BancoDados {
 	
 	public void gravarEmpregado(Empregado emp){
 		try {
-			 String query = "insert into cliente (nome,tipo,telefone,matricula,senha) values('"+emp.getNome()+"',"+emp.getTipo()+",'"+emp.getTelefone()+"','"+emp.getMatricula()+"','"+emp.getSenha()+");";
+			 String query = "insert into empregado (nome,tipo,telefone,matricula,senha) values('"+emp.getNome()+"',"+emp.getTipo()+",'"+emp.getTelefone()+"','"+emp.getMatricula()+"','"+emp.getSenha()+");";
+			 this.statement.executeUpdate(query);
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+	}
+	
+	public void gravarPedido(Pedido ped){
+		try {
+			 String query = "insert into pedido(valor-total,id_Cliente) values('"+ped.getValorTotal()+"','"+ped.getIdCliente()+"');";
+			 this.statement.executeUpdate(query);
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+	}
+
+	public void gravarContemEmPedido(int idProduto, int idPedido, int quantidade){
+		try {
+			 String query = "insert into Contem_pedido(id-pedido,id-produto,quantidade) values('"+idPedido+"','"+idProduto+"','"+quantidade+"');";
+			 this.statement.executeUpdate(query);
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+	}
+	public void gravarVenda(Venda venda){
+		try {
+			 String query = "insert into Venda(Forma_pagamento,data,id_Empregado,id_Pedido) values('"+venda.getFormaPagamento()+"','"+venda.getData()+"','"+venda.getIdEmpregado()+"','"+venda.getPedido().getId()+"');";
 			 this.statement.executeUpdate(query);
 			} catch (SQLException e) {
 				System.out.println(e);
 			}
 	}
 }
+
+
 
 
 
