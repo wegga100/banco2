@@ -10,6 +10,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 import Model.Cliente;
+import Model.Empregado;
 import Model.Produtos;
 import Model.Seccao;
 
@@ -46,9 +47,9 @@ public class BancoDados {
 	
 	
 	public void gravarCliente(Cliente cliente){
-		 String query = "insert into cliente (nome,tipo,telefone) values('"+cliente.getNome()+"',"+cliente.getTipo()+",'"+cliente.getTelefone()+"');";
+		
 		try {
-			 String queryTemp= "insert into cliente (nome,tipo,telefone) values('"+cliente.getNome()+"',"+cliente.getTipo()+",'"+cliente.getTelefone()+"');";
+			 String query= "insert into cliente (nome,tipo,telefone) values('"+cliente.getNome()+"',"+cliente.getTipo()+",'"+cliente.getTelefone()+"');";
 			 this.statement.executeUpdate(query);
 		} catch (SQLException e) {
 			System.out.println(e);
@@ -82,5 +83,34 @@ public class BancoDados {
 		query  = null;
 		
 	}	
+
 	
+	public void gravarEmpregado(Empregado emp){
+		try {
+			 String query = "insert into cliente (nome,tipo,telefone,matricula,senha) values('"+emp.getNome()+"',"+emp.getTipo()+",'"+emp.getTelefone()+"','"+emp.getMatricula()+"','"+emp.getSenha()+");";
+			 this.statement.executeUpdate(query);
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

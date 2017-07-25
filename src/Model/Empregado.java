@@ -9,6 +9,22 @@ public class Empregado extends Cliente {
 		this.matricula=matricula;
 		this.senha=senha;
 	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	
 	
 }
