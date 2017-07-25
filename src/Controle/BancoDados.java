@@ -66,20 +66,21 @@ public class BancoDados {
 		}
 		query  = null;
 		
-	}
-		
+	}	
 	
+
 	
-	public static void main(String[] args) {
-		 BancoDados b =new BancoDados();
-		 b.conectar();
-		 if(b.estaConectado()){
-			 System.out.println("sim");
-		 }
-		 else{
-			 System.out.println("nao");
-		 }
+	public void gravarProdutos(Produtos prod){
 		
-	}
+		String query = "insert into Produto (nome,cod_Barras,validade,preço,quant_estoque,descrição,id_seccao) "
+				+ "values('"+prod.getNome()+"','"+prod.getCodBarras()+"','"+prod.getDataValidade()+"','"+prod.getPreco()+"','"+prod.getQuantEstoque()+"','"+prod.getDescricao()+"','"+prod.getIdSeccao()+"')";
+		try {
+				 this.statement.executeUpdate(query);
+		} catch (SQLException e) {
+				System.out.println(e);
+		}
+		query  = null;
+		
+	}	
 	
 }
