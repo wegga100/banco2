@@ -22,7 +22,20 @@ public class Produtos {
 		this.descricao=descricao;
 		this.idSeccao=idSeccao;
 	}
-
+	
+	
+	public Produtos(int id, String nome, String codBarras,String dataValidade, float preco, int quantEstoque, String descricao, int idSeccao) {
+		this.nome = nome;
+		this.codBarras = codBarras;
+		this.dataValidade= dataValidade;
+		this.preco = preco;
+		this.quantEstoque=quantEstoque;
+		this.descricao=descricao;
+		this.idSeccao=idSeccao;
+	}
+	
+	
+	
 	public String getNome() {
 		return nome;
 	}

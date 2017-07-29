@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -120,6 +121,116 @@ public class BancoDados {
 				System.out.println(e);
 			}
 	}
+
+	public ArrayList<Cliente> pesquisarCliente(String nome){
+		
+		ArrayList<Cliente > clientes =  new ArrayList<>();
+		try {
+			String query = "select * from cliente where nome ='"+nome+"';";
+			this.resultSet = this.statement.executeQuery(query);
+			while (this.resultSet.next()){
+				clientes.add(new Cliente(
+						this.resultSet.getInt("id"),
+						this.resultSet.getString("nome"), 
+						this.resultSet.getInt("tipo"), 
+						this.resultSet.getString("telefone")));
+			}
+			
+			return clientes;
+			
+		} catch (SQLException e) {
+			System.out.println("erro : "+e);
+			e.printStackTrace();
+		}
+		return null;	
+	}
+	
+	public Cliente pesquisarClienteId(int id){
+		
+		ArrayList<Cliente > clientes =  new ArrayList<>();
+		try {
+			String query = "select * from cliente where id='"+id+"';";
+			this.resultSet = this.statement.executeQuery(query);
+			
+			 return new Cliente(
+						this.resultSet.getInt("id"),
+						this.resultSet.getString("nome"), 
+						this.resultSet.getInt("tipo"), 
+						this.resultSet.getString("telefone"));
+		} catch (SQLException e) {
+			System.out.println("erro : "+e);
+			e.printStackTrace();
+		}
+		return null;	
+	}
+	
+	
+	public ArrayList<Produtos> pesquisarProd(String nome){
+		
+		
+		try {
+			ArrayList<Produtos> produtos =  new ArrayList<>();
+			String query = "select * from produto where nome ='"+nome+"';";
+			this.resultSet = this.statement.executeQuery(query);
+			while(this.resultSet.next()){	
+				produtos.add(new Produtos(
+						this.resultSet.getInt("id"),
+						this.resultSet.getString("nome"),
+						this.resultSet.getNString("cod_barras"),
+						this.resultSet.getString("validade"), 
+						this.resultSet.getFloat("preço"), 
+						this.resultSet.getInt("quant_estoque"),
+						this.resultSet.getString("descrição"),
+						this.resultSet.getInt("id_seccao")));
+			}
+			
+			return produtos;
+		} catch (SQLException e) {
+			System.err.println("Erro : "+e);
+			
+		}
+		
+		
+		return null;
+	}
+
+	public Produtos pesquisarProdCodigo(int cod_barras){
+		
+		
+		try {
+			
+			String query = "select * from produto where cor_barras ='"+cod_barras+"';";
+			this.resultSet = this.statement.executeQuery(query);
+			return new Produtos(
+						this.resultSet.getInt("id"),
+						this.resultSet.getString("nome"),
+						this.resultSet.getNString("cod_barras"),
+						this.resultSet.getString("validade"), 
+						this.resultSet.getFloat("preço"), 
+						this.resultSet.getInt("quant_estoque"),
+						this.resultSet.getString("descrição"),
+						this.resultSet.getInt("id_seccao"));
+			
+		} catch (SQLException e) {
+			System.err.println("Erro : "+e);
+			
+		}
+		
+		
+		return null;
+		
+	}
+	
+	public boolean retirarDoEstoque(String cod_barras){
+		
+		
+		
+		
+		
+		
+		return false;
+	}
+
 }
 
 
