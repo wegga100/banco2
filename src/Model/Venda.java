@@ -20,6 +20,18 @@ public class Venda {
 		this.idEmpregado = idEmpregado;
 		this.formaPagamento= formaPagamento;
 	}
+	
+	public Venda(int id ,Pedido p, String data, int idEmpregado, int formaPagamento){
+		App.banco.gravarPedido(p);
+		for(int i=0;i<p.getQuantDeProd().size();i++){
+			App.banco.gravarContemEmPedido(p.getProdNoCarrinho().get(i).getId(), p.getId(), p.getQuantDeProd().get(i));
+		}
+		this.id = id;
+		this.pedido = p;
+		this.data=data;
+		this.idEmpregado = idEmpregado;
+		this.formaPagamento= formaPagamento;
+	}
 
 	public int getIdEmpregado() {
 		return idEmpregado;

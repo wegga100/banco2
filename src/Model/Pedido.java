@@ -13,6 +13,17 @@ public class Pedido {
 	public Pedido(int idCliente) {
 		this.idCliente = idCliente;
 	}
+	
+	
+	public Pedido(){
+		
+	}
+	
+	public Pedido(int id , float valorTotal, int idCliente) {
+		this.id = id;
+		this.valorTotal = valorTotal;
+		this.idCliente = idCliente;
+	}
 
 	public void addItem(Produtos prod, int quant){
 		prodNoCarrinho.add(prod);
