@@ -7,9 +7,14 @@ public class Seccao {
 	
 	
 	public Seccao() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
+	public Seccao(int id, String nome, String descricao){
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+	}
 
 	public int getId() {
 		return id;

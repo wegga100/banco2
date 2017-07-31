@@ -152,17 +152,20 @@ public class BancoDados {
 			String query = "select * from cliente where id='"+id+"';";
 			this.resultSet = this.statement.executeQuery(query);
 			
-			 return new Cliente(
+			 Cliente c =  new Cliente(
 						this.resultSet.getInt("id"),
 						this.resultSet.getString("nome"), 
 						this.resultSet.getInt("tipo"), 
 						this.resultSet.getString("telefone"));
+			 System.out.println(c.getNome());
+			 return c;
 		} catch (SQLException e) {
 			System.out.println("erro : "+e);
 			e.printStackTrace();
 		}
 		return null;	
 	}
+	
 	
 	public ArrayList<Produtos> pesquisarProd(String nome){
 		
@@ -284,7 +287,55 @@ public class BancoDados {
 		
 		return null;
 	}
+
+	public ArrayList<Seccao> pesquisarSeccao(String nome){
+		
+		ArrayList<Seccao> seccao = new ArrayList<>();
+		String query =  "select *  from  seccao where nome = '%"+nome+"%';";
+		try {
+			this.resultSet = this.statement.executeQuery(query);
+			
+			while(this.resultSet.next()){
+				seccao.add(new Seccao(
+						
+						this.resultSet.getInt("id"),
+						this.resultSet.getString("nome"),
+						this.resultSet.getString("descricao")));
+			}
+		
+			return seccao;
+			
+		} catch (SQLException e) {
+			System.err.println("Erro :  "+e);
+			
+		}
+		
+		return null;
+	}
+
+	public boolean validarLogin(String login, String senha){
+		
 	
+		try {
+			String query =  "select senha  from  empregado  where  nome = '"+login+"' ;";
+			this.resultSet =  this.statement.executeQuery(query);
+			if(!resultSet.next()){
+				return false;
+			}
+			String s = this.resultSet.getString("senha");
+			if(s.equals(senha)){
+				return true;
+			}else {
+				return false;
+			}
+		} catch (SQLException e) {
+			
+			App.erro.mensagemErro("Erro ao realizar login");
+		}	
+		return false;
+	}
+
+
 }
 
 
