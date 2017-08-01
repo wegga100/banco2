@@ -23,9 +23,9 @@ public class App {
 		 
 		 
 
-		Cliente c  =  new Cliente("bruino", 0, "556423");
+		Cliente c  =  new Cliente("Daniel", 0, "4674123");
 		App.banco.gravarCliente(c);
-		c = App.banco.pesquisarClienteId(1);
+		c = App.banco.pesquisarClienteId(2);
 	}
 
 }

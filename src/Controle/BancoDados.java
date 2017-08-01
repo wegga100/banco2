@@ -22,7 +22,7 @@ public class BancoDados {
 
 	private Connection connection = null;
 	private Statement statement = null;
-	private ResultSet resultSet= null;
+	private ResultSet resultSet;
 	private ResultSet resultSetDois =  null;
 	
 	public void conectar(){
@@ -149,18 +149,32 @@ public class BancoDados {
 		
 		ArrayList<Cliente > clientes =  new ArrayList<>();
 		try {
-			String query = "select * from cliente where id='"+id+"';";
-			this.resultSet = this.statement.executeQuery(query);
+			String query = "select * from cliente where id='"+id+"'";
+			statement= connection.prepareStatement(query);
+			resultSet = statement.executeQuery(query);
 			
-			 Cliente c =  new Cliente(
-						this.resultSet.getInt("id"),
-						this.resultSet.getString("nome"), 
-						this.resultSet.getInt("tipo"), 
-						this.resultSet.getString("telefone"));
+			this.resultSet.next();
+			
+			int i = resultSet.getInt("id");
+			
+			
+			Cliente c= new Cliente(
+						i,
+						resultSet.getString("nome"), 
+						resultSet.getInt("tipo"), 
+						resultSet.getString("telefone"));
 			 System.out.println(c.getNome());
+			 
 			 return c;
+			 
 		} catch (SQLException e) {
 			System.out.println("erro : "+e);
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}
 		return null;	

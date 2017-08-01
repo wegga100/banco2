@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 
 import App.App;
 import Model.Cliente;
+import Model.Empregado;
 
 
 public class Tela_Cadastros extends JFrame implements ActionListener{
@@ -199,7 +200,8 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// AÇÃO PRODUTO
 		if(e.getSource().equals(this.probcadastrar)) {
-			
+//			Empregado e  =  new Empregado(nome, tipo, telefone, matricula, senha);
+//			App.banco.gravarEmpregado(e);;
 			dispose();
 		}
 		if (e.getSource().equals(this.probsair)) {
@@ -217,7 +219,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	//		APP.BD.cadastrarCliente(c);
 			
 			if(clicombo.getSelectedItem().equals("Pessoa Fisica")){
-				
+//				int c = 0;
 			}
 			
 			dispose();
