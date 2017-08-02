@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Controle.BancoDados;
 import Model.Cliente;
+import Model.Produtos;
 import View.TelaErro;
 
 public class App {
@@ -23,9 +24,6 @@ public class App {
 		 
 		 
 
-		Cliente c  =  new Cliente("Daniel", 0, "4674123");
-		App.banco.gravarCliente(c);
-		c = App.banco.pesquisarClienteId(2);
 	}
 
 }
