@@ -6,7 +6,10 @@ public class Seccao {
 	private String descricao;
 	
 	
-	public Seccao() {
+	public Seccao(String nome, String descricao) {
+		
+		this.nome = nome;
+		this.descricao =  descricao;
 		
 	}
 

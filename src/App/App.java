@@ -1,11 +1,12 @@
 package App;
 
 import java.util.ArrayList;
-
 import Controle.BancoDados;
 import Model.Cliente;
 import Model.Produtos;
+import Model.Seccao;
 import View.TelaErro;
+
 
 public class App {
 	
@@ -20,8 +21,12 @@ public class App {
 		 }
 		 else{
 			 System.out.println("nao");
+			 
 		 }
 		 
+		 
+		 Seccao c  =  new Seccao("Bebidas","Bedidas e liquidos em geral");
+		 App.banco.gravarSeccao(c);
 		 
 
 	}

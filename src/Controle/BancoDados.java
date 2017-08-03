@@ -57,13 +57,13 @@ public class BancoDados {
 			 String query= "insert into cliente (nome,tipo,telefone) values('"+cliente.getNome()+"',"+cliente.getTipo()+",'"+cliente.getTelefone()+"');";
 			 this.statement.executeUpdate(query);
 		} catch (SQLException e) {
-			System.out.println(e);
+			System.err.println(e);
 		}
 	}
 	
 	public void gravarSeccao(Seccao sec){
 		
-		String query = "insert into seccao (nome,descricao) values('"+sec.getNome()+"',"+sec.getDescricao()+"');";
+		String query = "insert into seccao (nome,descricao) values('"+sec.getNome()+"','"+sec.getDescricao()+"');";
 		try {
 				 this.statement.executeUpdate(query);
 		} catch (SQLException e) {
