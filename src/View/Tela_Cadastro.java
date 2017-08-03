@@ -32,10 +32,14 @@ import Model.Seccao;
 
 
 
-public class Tela_Cadastros extends JFrame implements ActionListener{
+public class Tela_Cadastro extends JFrame implements ActionListener{
 	
 	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final String Numero = null;
 	JLabel prolnome, prolvalidade, prolpreco, prolquant_estoque, proldescricao, prolcodigo_barras, prolsessao;
 	JTextField profnome, profvalidade, profpreco, profquant_estoque, profdescricao, profcodigo_barras, profpesquisa;
 	JButton probcadastrar, probsair, problimpar, probpesquisar;
@@ -56,12 +60,12 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	
 	
 	
-	public Tela_Cadastros(){
+	public Tela_Cadastro(){
 		
 		
 		
 		
-		super( "Tela de Cadastros" );
+		super( "Tela de Cadastro");
 		JTabbedPane tabbedPane = new JTabbedPane(); 
 
 		// TELA PRODUTOS 
@@ -337,7 +341,6 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 			  Cliente c = new Cliente(clifnome.getText(), '0' , cliftelefone.getText());
 			  App.banco.gravarCliente(c);
 			}
-			
 			if(clicombo.getSelectedItem().equals("Pessoa Juridica")){
 				Cliente c = new Cliente(clifnome.getText(), '1' , cliftelefone.getText());
 				App.banco.gravarCliente(c);
