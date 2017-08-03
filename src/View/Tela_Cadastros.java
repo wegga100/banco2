@@ -44,7 +44,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		super( "Tela de Cadastros" );
 		JTabbedPane tabbedPane = new JTabbedPane(); 
 
-		// TELA PRODUTOS 
+		// TELA PRODUTOS tops
 		prolnome = new JLabel("NOME:");
 		profnome = new JTextField(25);
 		prolvalidade = new JLabel("VALIDADE:");
