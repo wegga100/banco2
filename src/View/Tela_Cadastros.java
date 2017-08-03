@@ -4,16 +4,32 @@ import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.SwingConstants;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 import App.App;
 import Model.Cliente;
 import Model.Empregado;
+import Model.Produtos;
+import Model.Seccao;
+import Model.Sessao;
 
 
 public class Tela_Cadastros extends JFrame implements ActionListener{
@@ -23,9 +39,10 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JLabel prolnome, prolvalidade, prolpreco, prolquant_estoque, proldescricao;
-	JTextField profnome, profvalidade, profpreco, profquant_estoque, profdescricao;
-	JButton probcadastrar, probsair, problimpar;
+	private static final String Numero = null;
+	JLabel prolnome, prolvalidade, prolpreco, prolquant_estoque, proldescricao, prolcodigo_barras, prolsessao;
+	JTextField profnome, profvalidade, profpreco, profquant_estoque, profdescricao, profcodigo_barras, profpesquisa;
+	JButton probcadastrar, probsair, problimpar, probpesquisar;
 
 	JLabel clilnome, cliltipo, cliltelefone;
 	JTextField clifnome, cliftelefone;
@@ -36,15 +53,23 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	JTextField sefnome, sefdescricao;
 	JButton sebcadastrar, sebsair, seblimpar;
 	
-	JLabel fulnome, fulsexo, fulmatricula, fullogin, fulsenha, fulresenha;
-	JTextField fufnome, fufmatricula, fuflogin, fufsenha, fufresenha;
+	JLabel fulnome, fulsexo, fulmatricula, fullogin, fulsenha, fulresenha, fultelefone;
+	JTextField fufnome, fufmatricula, fuflogin, fuftelefone;
+	JPasswordField fufsenha, fufresenha;
 	JButton fubcadastrar, fubsair, fublimpar;
 	
+	
+	
 	public Tela_Cadastros(){
+		
+		
+		
+		
 		super( "Tela de Cadastros" );
 		JTabbedPane tabbedPane = new JTabbedPane(); 
 
-		// TELA PRODUTOS tops
+		// TELA PRODUTOS 
+		prolsessao = new JLabel("                    SESSÃO                    ");
 		prolnome = new JLabel("NOME:");
 		profnome = new JTextField(25);
 		prolvalidade = new JLabel("VALIDADE:");
@@ -55,17 +80,82 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		profquant_estoque = new JTextField(25);
 		proldescricao= new JLabel("DESCRIÇÃO:");
 		profdescricao = new JTextField(25);
+		prolcodigo_barras = new JLabel("CODIGO DE BARRAS");
+		profcodigo_barras = new JTextField(25);
+		profpesquisa = new JTextField(15);
+		probpesquisar = new JButton("PESQUISAR");
+		probpesquisar.addActionListener(this);
 		probcadastrar = new JButton("CADASTRAR");
 		probcadastrar.addActionListener(this);
 		probsair = new JButton("SAIR");
 		probsair.addActionListener(this);
 		problimpar = new JButton("LIMPAR");
 		problimpar.addActionListener(this);
+		fultelefone = new JLabel("TELEFONE");
+		fuftelefone = new JTextField(25);
+			
+		
+		try {
+			MaskFormatter maskcpf =  new javax.swing.text.MaskFormatter("####");
+			profpreco = new JFormattedTextField(maskcpf);
+			profpreco.setColumns(24);
+			
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			MaskFormatter maskcpf =  new javax.swing.text.MaskFormatter("##/##/####");
+			profvalidade = new JFormattedTextField(maskcpf);
+			profvalidade.setColumns(24);
+			
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+			
+		profnome.addKeyListener(new KeyListener() {
+			
+			public void keyTyped(KeyEvent e) {
+			
+				char c = e.getKeyChar();
+				if(Character.isDigit(c)){
+					e.consume();
+				}
+			}
+			
+			public void keyReleased(KeyEvent e) {}
+			
+			public void keyPressed(KeyEvent e) {}
+		});
+		profquant_estoque.addKeyListener(new KeyListener() {
+			
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if(c<'0' || c> '9'){
+					
+					e.consume();
+					
+				}
+				
+			}
+			
+			public void keyReleased(KeyEvent e) {}
+			
+			public void keyPressed(KeyEvent e) {}
+		});
 
 
 		JLabel label1 = new JLabel( "", SwingConstants.CENTER );
 		JPanel panel1 = new JPanel(); 
-
+		
+		panel1.add(prolsessao);
+		panel1.add(profpesquisa);
+		panel1.add(probpesquisar);
+		panel1.add(prolcodigo_barras);
+		panel1.add(profcodigo_barras);
 		panel1.add(prolnome);
 		panel1.add(profnome);
 		panel1.add(prolvalidade);
@@ -82,10 +172,8 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 
 		panel1.add( label1 );
 		tabbedPane.addTab( "PRODUTO", null, panel1, "First Panel" ); 
-
-
-
-
+		
+		
 		// TELA CLIENTE
 
 		clicombo = new JComboBox(new Object[]{"              PESSOA FÍSICA           ", "          PESSOA JURÍDICA        "});
@@ -103,6 +191,16 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 
 		JLabel label2 = new JLabel( "", SwingConstants.CENTER );
 		JPanel panel2 = new JPanel(); 
+		
+		try {
+			MaskFormatter maskcpf =  new javax.swing.text.MaskFormatter("##-####-####");
+			cliftelefone = new JFormattedTextField(maskcpf);
+			cliftelefone.setColumns(24);
+			
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		panel2.add(cliltipo);
 		panel2.add(clicombo);
@@ -160,9 +258,9 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		fullogin = new JLabel("LOGIN:");
 		fuflogin = new JTextField(25);
 		fulsenha = new JLabel("SENHA:");
-		fufsenha = new JTextField(25);
+		fufsenha = new JPasswordField(25);
 		fulresenha = new JLabel("CONFIRMAR A SENHA:");
-		fufresenha = new JTextField(25);
+		fufresenha = new JPasswordField(25);
 		fubcadastrar = new JButton("CADASTRAR");
 		fubcadastrar.addActionListener(this);
 		fubsair = new JButton("SAIR");
@@ -179,6 +277,8 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		panel4.add(fufnome);
 		panel4.add(fulmatricula);
 		panel4.add(fufmatricula);
+		panel4.add(fultelefone);
+		panel4.add(fuftelefone);
 		panel4.add(fullogin);
 		panel4.add(fuflogin);
 		panel4.add(fulsenha);
@@ -195,72 +295,123 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		add( tabbedPane );
 		
 	}
-
+	
 		
 	public void actionPerformed(ActionEvent e) {
 		// AÇÃO PRODUTO
 		if(e.getSource().equals(this.probcadastrar)) {
-//			Empregado e  =  new Empregado(nome, tipo, telefone, matricula, senha);
-//			App.banco.gravarEmpregado(e);;
-			dispose();
+			
+			
+			int i = Integer.parseInt(profquant_estoque.getText());
+			float f = Float.parseFloat(profpreco.getText());
+			int s = Integer.parseInt(profpesquisa.getText());
+			//Produtos w = new Produtos(nome, codBarras, dataValidade, preco, quantEstoque, descricao, idSeccao)	
+			Produtos p = new Produtos(profnome.getText(), profcodigo_barras.getText(), profvalidade.getText(), f, i, profdescricao.getText(), s );
+			System.out.println(profnome.getText()+ profcodigo_barras.getText() + profvalidade.getText()+ profpreco.getText() + profquant_estoque.getText()+ profdescricao.getText()+ 10);
+			// Estudar...
+			App.banco.gravarProdutos(p);
+			
+			
+			
+			
 		}
 		if (e.getSource().equals(this.probsair)) {
 			dispose();
 			new Tela_Menu();
 		}
 		if (e.getSource().equals(this.problimpar)) {
-			dispose();
-			// COMANDO LIMPAR JTEXTFIELD
+			
+			profpesquisa.getText();
+			profcodigo_barras.setText("");
+			profnome.setText("");
+			profvalidade.setText("");
+			profpreco.setText("");
+			profquant_estoque.setText("");
+			profdescricao.setText("");
+			
+			
 		}
 		
 		//AÇÃO CLIENTE
 		if(e.getSource().equals(this.clibcadastrar)) {
-	//		Cliente c = new Cliente(nome, tipo, telefone);
-	//		APP.BD.cadastrarCliente(c);
+			
+			
 			
 			if(clicombo.getSelectedItem().equals("Pessoa Fisica")){
-//				int c = 0;
+			  Cliente c = new Cliente(clifnome.getText(), '0' , cliftelefone.getText());
+			  App.banco.gravarCliente(c);
+			}
+			if(clicombo.getSelectedItem().equals("Pessoa Juridica")){
+				Cliente c = new Cliente(clifnome.getText(), '1' , cliftelefone.getText());
+				App.banco.gravarCliente(c);
 			}
 			
-			dispose();
+			clifnome.setText("");
+			cliftelefone.setText("");
 		}
 		if (e.getSource().equals(this.clibsair)) {
 			dispose();
 			new Tela_Menu();
 		}
 		if (e.getSource().equals(this.cliblimpar)) {
-			dispose();
-			// COMANDO LIMPAR JTEXTFIELD
+			
+			clifnome.setText("");
+			cliftelefone.setText("");
 		}
 		
 		//AÇÃO SESSÃO
 		if(e.getSource().equals(this.sebcadastrar)) {
-			//METODO CADASTRAR
-			dispose();
+			
+			Seccao s = new Seccao(sefnome.getText(), sefdescricao.getText());
+			App.banco.gravarSeccao(s);
+			System.out.println(sefnome.getText()+sefdescricao.getText());
+			
+			sefnome.setText("");
+			sefdescricao.setText("");
+			
 		}
 		if (e.getSource().equals(this.sebsair)) {
 			dispose();
 			new Tela_Menu();
 		}
 		if (e.getSource().equals(this.seblimpar)) {
-			dispose();
-			// COMANDO LIMPAR JTEXTFIELD
+			sefnome.setText("");
+			sefdescricao.setText("");
 		}
 		
 		//AÇÃO FUNCIONÁRIO
 		if(e.getSource().equals(this.fubcadastrar)) {
-			//METODO CADASTRAR
-			dispose();
+			if(clicombo.getSelectedItem().equals("Masculino")){
+				Empregado EM = new Empregado(fufnome.getText(), 0 , fuftelefone.getText(), fufmatricula.getText(), fufsenha.getSelectedText());
+				App.banco.gravarEmpregado(EM);
+			}
+			if(clicombo.getSelectedItem().equals("Feminino")){
+				Empregado EM = new Empregado(fufnome.getText(), 1 , fuftelefone.getText(), fufmatricula.getText(), fufsenha.getSelectedText());
+				App.banco.gravarEmpregado(EM);
+			}
+			
+			fufnome.setText("");
+			fuftelefone.setText("");
+			fufmatricula.setText("");
+			fuflogin.setText("");
+			fufsenha.setText("");
+			fufresenha.setText("");
+			
 		}
 		if (e.getSource().equals(this.fubsair)) {
 			dispose();
 			new Tela_Menu();
 		}
 		if (e.getSource().equals(this.fublimpar)) {
-			dispose();
-			// COMANDO LIMPAR JTEXTFIELD
+			
+			fufnome.setText("");
+			fuftelefone.setText("");
+			fufmatricula.setText("");
+			fuflogin.setText("");
+			fufsenha.setText("");
+			fufresenha.setText("");
 		}
 	}
-
+	
 } 
 

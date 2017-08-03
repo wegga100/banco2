@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import App.App;
+
 public class Tela_Menu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -131,7 +133,7 @@ public class Tela_Menu extends JFrame {
 					tabbedPaneFrame.setSize( 340, 450 );
 					tabbedPaneFrame.setVisible( true ); 
 					tabbedPaneFrame.setLocationRelativeTo(null);
-
+//					App.banco.gravarCliente(New Cliente());
 				}
 
 				if(e.getSource()==sair){		
