@@ -341,6 +341,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 			  Cliente c = new Cliente(clifnome.getText(), '0' , cliftelefone.getText());
 			  App.banco.gravarCliente(c);
 			}
+			
 			if(clicombo.getSelectedItem().equals("Pessoa Juridica")){
 				Cliente c = new Cliente(clifnome.getText(), '1' , cliftelefone.getText());
 				App.banco.gravarCliente(c);

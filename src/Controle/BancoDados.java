@@ -88,7 +88,7 @@ public class BancoDados {
 
 	public void gravarEmpregado(Empregado emp){
 		try {
-			 String query = "insert into empregado (nome,tipo,telefone,matricula,senha) values('"+emp.getNome()+"',"+emp.getTipo()+",'"+emp.getTelefone()+"','"+emp.getMatricula()+"','"+emp.getSenha()+");";
+			 String query = "insert into empregado (nome,matricula,senha) values('"+emp.getNome()+"','"+emp.getMatricula()+"','"+emp.getSenha()+"');";
 			 this.statement.executeUpdate(query);
 			} catch (SQLException e) {
 				System.out.println(e);
