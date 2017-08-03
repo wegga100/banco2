@@ -32,7 +32,7 @@ import Model.Seccao;
 
 
 
-public class Tela_Cadastros extends JFrame implements ActionListener{
+public class Tela_Cadastro extends JFrame implements ActionListener{
 	
 	
 	/**
@@ -60,12 +60,12 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	
 	
 	
-	public Tela_Cadastros(){
+	public Tela_Cadastro(){
 		
 		
 		
 		
-		super( "Tela de Cadastros" );
+		super( "Tela de Cadastro");
 		JTabbedPane tabbedPane = new JTabbedPane(); 
 
 		// TELA PRODUTOS 
