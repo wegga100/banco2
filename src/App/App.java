@@ -17,6 +17,9 @@ public class App {
 
 	public static void main(String[] args) {
 		
+		
+		
+		
 		App.banco.conectar();
 		 if(App.banco.estaConectado()){
 			 System.out.println("sim");
