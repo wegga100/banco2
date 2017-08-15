@@ -28,7 +28,7 @@ public class App {
 			 System.out.println("nao");
 			 
 		 }
-		 new Tela_Menu();
+		 
 		 
 		 
 		 //eded
