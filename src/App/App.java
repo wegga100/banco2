@@ -9,6 +9,7 @@ import Model.Produtos;
 import Model.Seccao;
 import View.TelaErro;
 import View.Tela_Menu;
+import View.Tela_Pesquisa;
 
 
 public class App {
@@ -30,7 +31,7 @@ public class App {
 		 }
 		 
 		 
-		 
+		 new Tela_Pesquisa();
 		 
 
 	}

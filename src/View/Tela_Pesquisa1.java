@@ -12,15 +12,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import App.App;
 import Model.Cliente;
 import Model.Empregado;
 import Model.Produtos;
 import Model.Seccao;
 
-public class Tela_Pesquisa extends JFrame implements ActionListener {
+import javax.swing.table.DefaultTableModel;
+
+public class Tela_Pesquisa1 extends JFrame implements ActionListener{
+
+
 	JTextField fielpesquisa, fielrelatorio;
 	JButton buscar, voltar, Alterar;
 	JComboBox pescombo;
@@ -28,7 +32,9 @@ public class Tela_Pesquisa extends JFrame implements ActionListener {
 	JScrollPane scrollPane ;
 	JTable teble;
 
-	public Tela_Pesquisa() {
+
+
+	public Tela_Pesquisa1() {
 
 		TableModel dm = null;
 
@@ -81,7 +87,6 @@ public class Tela_Pesquisa extends JFrame implements ActionListener {
 
 	}
 
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(this.buscar)) {
@@ -122,7 +127,6 @@ public class Tela_Pesquisa extends JFrame implements ActionListener {
 			dispose();
 			new Tela_Menu();
 		}	
-
 	}
 
 	public void montarTabelaProdutos(){
@@ -263,7 +267,6 @@ public class Tela_Pesquisa extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		new Tela_Pesquisa();
+		new Tela_Pesquisa1();
 	}
-
 }
