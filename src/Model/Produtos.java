@@ -99,6 +99,9 @@ public class Produtos {
 	public String getDataValidade() {
 		return dataValidade;
 	}
+	public String[] getLinhaTable(){
+		return new String[]{String.valueOf(this.id), this.nome, this.descricao};
+	}
 	
 	
 

@@ -3,7 +3,7 @@ package Model;
 public class Empregado extends Cliente {
 	private String matricula;
 	private String senha;
-	
+
 	public Empregado(String nome, int tipo, String telefone, String matricula, String senha) {
 		super( nome, tipo, telefone);
 		this.matricula=matricula;
@@ -25,6 +25,10 @@ public class Empregado extends Cliente {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
+	public String[] getLinhaTable(){
+
+		return new String[]{String.valueOf(this.getNome()), ""+this.getTipo(), ""+this.getTelefone()};
+	}
+
+
 }

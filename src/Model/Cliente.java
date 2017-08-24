@@ -13,8 +13,8 @@ public class Cliente {
 		this.telefone=telefone;
 		//
 	}
-	
-	
+
+
 	public Cliente(int id, String nome, int tipo, String telefone) {
 
 		this.nome=nome;
@@ -55,6 +55,10 @@ public class Cliente {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
+	public String[] getLinhaTable(){
+
+		return new String[]{String.valueOf(this.nome), ""+tipo, this.telefone};
+	}
 
 }

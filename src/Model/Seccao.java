@@ -4,13 +4,13 @@ public class Seccao {
 	private int id;
 	private String nome;
 	private String descricao;
-	
-	
+
+
 	public Seccao(String nome, String descricao) {
-		
+
 		this.nome = nome;
 		this.descricao =  descricao;
-		
+
 	}
 
 	public Seccao(int id, String nome, String descricao){
@@ -46,6 +46,10 @@ public class Seccao {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public String[] getLinhaTable(){
+
+		return new String[]{String.valueOf(this.nome), this.descricao};
 	}
 
 }

@@ -20,7 +20,7 @@ public class Conect {
 	public void conectar(){
 		String servidor = "jdbc:mysql://localhost:3306/fbd_grafica?useSSL=false";
 		String usuario = "root";
-		String senha ="1234";
+		String senha ="arthur@123";
 		String drive ="com.mysql.jdbc.Driver";
 		
 		try {
