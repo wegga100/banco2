@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Model.Cliente;
+import Model.Pedido;
 
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
@@ -111,27 +112,24 @@ public class Tela_Venda extends JFrame implements ActionListener {
 				));
 		scrollPane.setViewportView(table_1);
 
-		List<Cliente> cliente = new ArrayList<>();
-		Cliente cli = new Cliente("Maria", 0, "879999949");
-		cli.setId(10);
+		List<Pedido> pedido = new ArrayList<>();
+		Pedido pe = new Pedido();
+		pe.setId(10);
 
-		cliente.add(cli);
+		pedido.add(pe);
 
 
-		Cliente cli1 = new Cliente("josé", 1, "879999949");
-		cli1.setId(10);
-
-		cliente.add(cli1);
+		
 
 
 		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
 		model.setRowCount(0);
-		for(Cliente c: cliente){
-			model.addRow(c.getLinhaTable());	
+		for(Pedido p: pedido){
+			model.addRow(p.getLinhaTable());	
 		}
 
-		//int lina = teble.getSelectedRow();
-		//String id = (String) model.getValueAt(lina, 0);
+		int lina = table_1.getSelectedRow();
+		String id = (String) model.getValueAt(lina, 0);
 
 
 	}
