@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="C:/Program Files/eclipse/mysql-connector-java-5.1.40.zip"/>
-	<classpathentry kind="lib" path="C:/eclipse/p2/mysql-connector-java-5.1.43/mysql-connector-java-5.1.43-bin.jar"/>
-=======
-	<classpathentry kind="lib" path="C:/UAST/git/banco2/lib/mysql-connector-java-5.1.43-bin.jar"/>
->>>>>>> branch 'master' of https://github.com/wegga100/banco2.git
+	<classpathentry excluding="src/" kind="src" path=""/>
+	<classpathentry kind="lib" path=".settings/org.eclipse.jdt.core.prefs"/>
+	<classpathentry kind="lib" path=".settings/org.eclipse.ltk.core.refactoring.prefs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
