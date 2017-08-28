@@ -75,9 +75,7 @@ public class Pedido {
 		this.quantDeProd = quantDeProd;
 	}
 
-	public String[] getLinhaTable(){
-		return new String[]{String.valueOf(this.nome), };
-	}
+	
 	
 	
 }

@@ -26,13 +26,40 @@ public class BancoDados {
 	private ResultSet resultSetDois =  null;
 	
 	
+	public void conectar(){
+		String servidor = "jdbc:mysql://localhost:3306/fbd_grafica?useSSL=false";
+		String usuario = "root";
+		String senha ="1234";
+		String drive ="com.mysql.jdbc.Driver";
+		
+		try {
+			Class.forName(drive);
+			this.connection = DriverManager.getConnection(servidor, usuario, senha);
+			this.statement = this.connection.createStatement();
+		} catch (Exception e) {
+			System.out.println("erro ao conec "+e);
+			JOptionPane.showMessageDialog(null, "Erro ao gravar /n"+e);
+		}
+	}	
 
+	public boolean estaConectado(){
+	
+		if(this.connection != null){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
 	public void gravarCliente(Cliente cliente){
 		
 		try {
 			 String query= "insert into cliente (nome,tipo,telefone) values('"+cliente.getNome()+"',"+cliente.getTipo()+",'"+cliente.getTelefone()+"');";
-			 this.statement.executeUpdate(query);
-		} catch (SQLException e) {
+			 statement.executeUpdate(query);
+			 
+			} catch (SQLException e) {
 			System.err.println(e);
 		}
 	}
@@ -51,7 +78,7 @@ public class BancoDados {
 		
 	public void gravarProdutos(Produtos prod){
 		
-		String query = "insert into Produto (nome,cod_Barras,validade,preço,quant_estoque,descrição,id_seccao) "
+		String query = "insert into Produto (nome,cod_barras,validade,preço,quant_estoque,descrição,id_seccao) "
 				+ "values('"+prod.getNome()+"','"+prod.getCodBarras()+"','"+prod.getDataValidade()+"','"+prod.getPreco()+"','"+prod.getQuantEstoque()+"','"+prod.getDescricao()+"','"+prod.getIdSeccao()+"')";
 		try {
 				 this.statement.executeUpdate(query);
@@ -307,7 +334,7 @@ public class BancoDados {
 		
 	
 		try {
-			String query =  "select senha  from  empregado  where  nome = '"+login+"' ;";
+			String query =  "select senha  from empregado  empregado  where  matricula like '"+login+"' ;";
 			this.resultSet =  this.statement.executeQuery(query);
 			if(!resultSet.next()){
 				return false;
