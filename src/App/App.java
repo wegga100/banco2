@@ -8,6 +8,7 @@ import Model.Empregado;
 import Model.Produtos;
 import Model.Seccao;
 import View.TelaErro;
+import View.Tela_Finalizar_Compra;
 import View.Tela_Menu;
 import View.Tela_Pesquisa;
 
@@ -29,9 +30,7 @@ public class App {
 			 System.out.println("nao");
 			 
 		 }
-		 
-
-		 new Tela_Menu();
+		 new Tela_Finalizar_Compra();
 		 
 
 	}
