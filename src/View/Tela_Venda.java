@@ -68,7 +68,7 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		getContentPane().add(table);
 		
 		table_1 = new JTable();
-		table_1.setBounds(20, 106, 700, 429);
+		table_1.setBounds(20, 106, 1055, 429);
 		getContentPane().add(table_1);
 		setSize(1100, 650);
 		setLocationRelativeTo(null);
@@ -76,21 +76,15 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
-	
+
+	private void Mai() {
+		new Tela_Venda();
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(this.vebsalvar)) {
-			dispose();
-			
-		}
-		if(e.getSource().equals(this.vebcancelar)) {
-			dispose();
-			
-		}
+		// TODO Auto-generated method stub
 		
 	}
 	
-	public static void main(String[] args) {
-		new Tela_Venda();
-	}
 }
