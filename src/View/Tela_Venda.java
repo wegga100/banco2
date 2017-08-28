@@ -7,6 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+<<<<<<< master
+import javax.swing.table.DefaultTableModel;
+
+import Model.Cliente;
+import Model.Pedido;
+
+=======
+>>>>>>> 2b47176 weqwe
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 
@@ -94,4 +102,38 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		
 	}
 	
+<<<<<<< master
+	public void montarTabelaCliente(){
+		table_1 = new JTable(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+						"NOME", "QUANTIDADE", "VALOR", "TOTAL"
+				}
+				));
+		scrollPane.setViewportView(table_1);
+
+		List<Pedido> pedido = new ArrayList<>();
+		Pedido pe = new Pedido();
+		pe.setId(10);
+
+		pedido.add(pe);
+
+
+		
+
+
+		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
+		model.setRowCount(0);
+		for(Pedido p: pedido){
+			model.addRow(p.getLinhaTable());	
+		}
+
+		int lina = table_1.getSelectedRow();
+		String id = (String) model.getValueAt(lina, 0);
+
+
+	}
+=======
+>>>>>>> 2b47176 weqwe
 }

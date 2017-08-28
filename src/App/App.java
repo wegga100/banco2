@@ -32,7 +32,12 @@ public class App {
 		 }
 		 new Tela_Finalizar_Compra();
 		 
+<<<<<<< HEAD
+		 
+		new Tela_Menu();
+=======
 
+>>>>>>> branch 'master' of https://github.com/wegga100/banco2.git
 	}
 
 }
