@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
+import javax.swing.ImageIcon;
 
 public class Tela_Venda extends JFrame implements ActionListener {
 	
@@ -16,6 +17,7 @@ public class Tela_Venda extends JFrame implements ActionListener {
 	JTextField fproduto, fquantidade, fpreco, ftotal, ftotalgeral;
 	private JTable table;
 	private JTable table_1;
+	private JButton btnNewButton;
 	
 	public Tela_Venda() {
 		
@@ -48,13 +50,13 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		getContentPane().add(totalgeral);
 		
 		produto.setBounds(20, 35, 150, 30);
-		fproduto.setBounds(20, 60, 700, 35);
-		quantidade.setBounds(725, 35, 150, 30);
-		fquantidade.setBounds(725, 60, 100, 35);
-		preco.setBounds(830, 35, 150, 30);
-		fpreco.setBounds(830, 60, 120, 35);
-		total.setBounds(955, 35, 150, 30);
-		ftotal.setBounds(955, 60, 120, 35);
+		fproduto.setBounds(20, 60, 586, 35);
+		quantidade.setBounds(616, 35, 150, 30);
+		fquantidade.setBounds(616, 60, 100, 35);
+		preco.setBounds(721, 35, 150, 30);
+		fpreco.setBounds(721, 60, 120, 35);
+		total.setBounds(846, 35, 150, 30);
+		ftotal.setBounds(846, 60, 120, 35);
 		vebsalvar.setBounds(20, 10, 150, 30);
 		vebcancelar.setBounds(180, 10, 150, 30);
 		totalgeral.setBounds(870, 550, 150, 30);
@@ -70,6 +72,11 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		table_1 = new JTable();
 		table_1.setBounds(20, 106, 1055, 429);
 		getContentPane().add(table_1);
+		
+		btnNewButton = new JButton("ADICIONAR");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Vaniedson\\Desktop\\Sem t\u00EDtulo-1.png"));
+		btnNewButton.setBounds(971, 59, 104, 36);
+		getContentPane().add(btnNewButton);
 		setSize(1100, 650);
 		setLocationRelativeTo(null);
 		setResizable(false);
