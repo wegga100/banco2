@@ -89,7 +89,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		profdescricao = new JTextField(25);
 		prolcodigo_barras = new JLabel("CODIGO DE BARRAS");
 		profcodigo_barras = new JTextField(25);
-		profpesquisa = new JTextField(15);
+		profpesquisa = new JTextField(25);
 		probcadastrar = new JButton("CADASTRAR");
 		probcadastrar.addActionListener(this);
 		probsair = new JButton("SAIR");
@@ -102,15 +102,15 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 
 
 
-		try {
-			MaskFormatter maskcpf =  new javax.swing.text.MaskFormatter("#.###,##");
-			profpreco = new JFormattedTextField(maskcpf);
-			profpreco.setColumns(24);
-
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			MaskFormatter maskcpf =  new javax.swing.text.MaskFormatter("");
+//			profpreco = new JFormattedTextField(maskcpf);
+//			profpreco.setColumns(24);
+//
+//		} catch (ParseException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 
 		try {
 			MaskFormatter maskcpf =  new javax.swing.text.MaskFormatter("##/##/####");
@@ -500,18 +500,27 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		// AÇÃO PRODUTO
 		if(e.getSource().equals(this.probcadastrar)) {
 
-			int i = Integer.parseInt(profquant_estoque.getText());
-			float f = Float.parseFloat(profpreco.getText());
+		//	int i = Integer.parseInt(profquant_estoque.getText());
+		//	float f = Float.parseFloat(profpreco.getText());
 			
 
-			String string = Float.toString(f);
-			System.out.println("oi");
-			int s = Integer.parseInt(profpesquisa.getText());
-			int g = Integer.parseInt(profcodigo_barras.getText());
+	///		String string = Float.toString(f);
+		//	System.out.println("oi");
+	//		int s = Integer.parseInt(profpesquisa.getText());
+	//		int g = Integer.parseInt(profcodigo_barras.getText());
 	//		Produtos w = new Produtos(nome, codBarras, dataValidade, preco, quantEstoque, descricao, idSeccao)	
 	//		Produtos p = new Produtos(profnome.getText(), g, profvalidade.getText(), f, i, profdescricao.getText(), 1 );//
 	//		App.banco.gravarProdutos(p);
 
+			int i = Integer.parseInt(profpreco.getText());
+			int x = Integer.parseInt(profpesquisa.getText());
+			
+			int s = Integer.parseInt(profquant_estoque.getText());	
+			Produtos p = new Produtos(profnome.getText(), profcodigo_barras.getText(), profvalidade.getText(), i, s, profdescricao.getText(), x);
+			System.out.println("oi ta ak");
+			App.banco.gravarProdutos(p);
+		
+			
 			profpesquisa.getText();
 			profcodigo_barras.setText("");
 			profnome.setText("");

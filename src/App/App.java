@@ -31,7 +31,7 @@ public class App {
 		 }
 		 
 		 
-		//new Tela_Menu();
+		new Tela_Menu();
 	}
 
 }
