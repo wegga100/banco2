@@ -4,6 +4,7 @@
 	<classpathentry excluding="src/" kind="src" path=""/>
 	<classpathentry kind="lib" path=".settings/org.eclipse.jdt.core.prefs"/>
 	<classpathentry kind="lib" path=".settings/org.eclipse.ltk.core.refactoring.prefs"/>
+	<classpathentry kind="lib" path="C:/Users/wegga/git/banco2/lib/mysql-connector-java-5.1.43-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
