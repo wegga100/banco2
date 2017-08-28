@@ -159,6 +159,8 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		for(Pedido p: pedido){
 			model.addRow(p.getLinhaTable());	
 		}
+		
+		
 
 		int lina = table_1.getSelectedRow();
 		String id = (String) model.getValueAt(lina, 0);

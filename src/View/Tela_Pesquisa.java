@@ -265,8 +265,4 @@ public class Tela_Pesquisa extends JFrame implements ActionListener{
 		int lina = teble.getSelectedRow();
 		String id = (String) model.getValueAt(lina, 0);
 	}
-
-	public static void main(String[] args) {
-		new Tela_Pesquisa();
-	}
 }

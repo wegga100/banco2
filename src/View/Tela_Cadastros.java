@@ -512,7 +512,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	//		Produtos p = new Produtos(profnome.getText(), g, profvalidade.getText(), f, i, profdescricao.getText(), 1 );//
 	//		App.banco.gravarProdutos(p);
 
-			int i = Integer.parseInt(profpreco.getText());
+			float i = Float.parseFloat(profpreco.getText());
 			int x = Integer.parseInt(profpesquisa.getText());
 			
 			int s = Integer.parseInt(profquant_estoque.getText());	

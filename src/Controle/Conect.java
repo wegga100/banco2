@@ -12,10 +12,10 @@ import Model.Cliente;
 public class Conect {
 
 
-	private Connection connection = null;
-	private Statement statement = null;
-	private ResultSet resultSet;
-	private ResultSet resultSetDois =  null;
+	 Connection connection = null;
+	 Statement statement = null;
+	 ResultSet resultSet;
+	 ResultSet resultSetDois =  null;
 	
 	public void conectar(){
 		String servidor = "jdbc:mysql://localhost:3306/fbd_grafica?useSSL=false";
@@ -42,5 +42,39 @@ public class Conect {
 			return false;
 		}
 	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+	public Statement getStatement() {
+		return statement;
+	}
+
+	public void setStatement(Statement statement) {
+		this.statement = statement;
+	}
+
+	public ResultSet getResultSet() {
+		return resultSet;
+	}
+
+	public void setResultSet(ResultSet resultSet) {
+		this.resultSet = resultSet;
+	}
+
+	public ResultSet getResultSetDois() {
+		return resultSetDois;
+	}
+
+	public void setResultSetDois(ResultSet resultSetDois) {
+		this.resultSetDois = resultSetDois;
+	}
+
+
 	
 }

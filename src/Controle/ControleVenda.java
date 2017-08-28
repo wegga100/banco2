@@ -22,6 +22,9 @@ public class ControleVenda {
 	public ControleVenda(Tela_Finalizar_Compra compra){
 		
 		pedido =  new Pedido();
+		
+		
+		
 	
 	}
 	
