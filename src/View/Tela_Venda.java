@@ -102,7 +102,7 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 	
-	public void montarTabelaCliente(){
+	public void montarTabelaVenda(){
 		table_1 = new JTable(new DefaultTableModel(
 				new Object[][] {
 				},
@@ -164,5 +164,11 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		String id = (String) model.getValueAt(lina, 0);
 
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
