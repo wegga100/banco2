@@ -9,22 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-<<<<<<< HEAD
-<<<<<<< master
+
 import javax.swing.table.DefaultTableModel;
 
 import Model.Cliente;
 import Model.Pedido;
 
-=======
->>>>>>> 2b47176 weqwe
-=======
+
 import javax.swing.table.DefaultTableModel;
 
 import Model.Cliente;
 import Model.Pedido;
-
->>>>>>> branch 'master' of https://github.com/wegga100/banco2.git
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
@@ -106,15 +101,39 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
-<<<<<<< HEAD
-<<<<<<< master
+	public void montarTabelaCliente(){
+		table_1 = new JTable(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+						"NOME", "QUANTIDADE", "VALOR", "TOTAL"
+				}
+				));
+		scrollPane.setViewportView(table_1);
+
+		List<Pedido> pedido = new ArrayList<>();
+		Pedido pe = new Pedido();
+		pe.setId(10);
+
+		pedido.add(pe);
+
+	
+		
+
+
+		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
+		model.setRowCount(0);
+		for(Pedido p: pedido){
+			model.addRow(p.getLinhaTable());	
+		}
+
+		int lina = table_1.getSelectedRow();
+		String id = (String) model.getValueAt(lina, 0);
+
+
+	}
+
 	public void montarTabelaCliente(){
 		table_1 = new JTable(new DefaultTableModel(
 				new Object[][] {
@@ -146,39 +165,4 @@ public class Tela_Venda extends JFrame implements ActionListener {
 
 
 	}
-=======
->>>>>>> 2b47176 weqwe
-=======
-	public void montarTabelaCliente(){
-		table_1 = new JTable(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-						"NOME", "QUANTIDADE", "VALOR", "TOTAL"
-				}
-				));
-		scrollPane.setViewportView(table_1);
-
-		List<Pedido> pedido = new ArrayList<>();
-		Pedido pe = new Pedido();
-		pe.setId(10);
-
-		pedido.add(pe);
-
-
-		
-
-
-		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
-		model.setRowCount(0);
-		for(Pedido p: pedido){
-			model.addRow(p.getLinhaTable());	
-		}
-
-		int lina = table_1.getSelectedRow();
-		String id = (String) model.getValueAt(lina, 0);
-
-
-	}
->>>>>>> branch 'master' of https://github.com/wegga100/banco2.git
 }
