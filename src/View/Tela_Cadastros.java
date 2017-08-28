@@ -47,7 +47,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 	private static final String JLabel5 = null;
 	JLabel prolnome, prolvalidade, prolpreco, prolquant_estoque, proldescricao, prolcodigo_barras, prolsessao;
 	JTextField profnome, profvalidade, profpreco, profquant_estoque, profdescricao, profcodigo_barras, profpesquisa;
-	JButton probcadastrar, probsair, problimpar, probpesquisar;
+	JButton probcadastrar, probsair, problimpar;
 
 	JLabel clilnome, cliltipo, cliltelefone;
 	JTextField clifnome, cliftelefone;
@@ -90,8 +90,6 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 		prolcodigo_barras = new JLabel("CODIGO DE BARRAS");
 		profcodigo_barras = new JTextField(25);
 		profpesquisa = new JTextField(15);
-		probpesquisar = new JButton("PESQUISAR");
-		probpesquisar.addActionListener(this);
 		probcadastrar = new JButton("CADASTRAR");
 		probcadastrar.addActionListener(this);
 		probsair = new JButton("SAIR");
@@ -204,7 +202,6 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 
 		panel1.add(prolsessao);
 		panel1.add(profpesquisa);
-		panel1.add(probpesquisar);
 		panel1.add(prolcodigo_barras);
 		panel1.add(profcodigo_barras);
 		panel1.add(prolnome);
@@ -512,7 +509,7 @@ public class Tela_Cadastros extends JFrame implements ActionListener{
 			int s = Integer.parseInt(profpesquisa.getText());
 			int g = Integer.parseInt(profcodigo_barras.getText());
 	//		Produtos w = new Produtos(nome, codBarras, dataValidade, preco, quantEstoque, descricao, idSeccao)	
-			Produtos p = new Produtos(profnome.getText(), g, profvalidade.getText(), f, i, profdescricao.getText(), 1 );//
+	//		Produtos p = new Produtos(profnome.getText(), g, profvalidade.getText(), f, i, profdescricao.getText(), 1 );//
 	//		App.banco.gravarProdutos(p);
 
 			profpesquisa.getText();
