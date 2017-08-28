@@ -117,7 +117,7 @@ public class Tela_Menu extends JFrame {
 			if(e.getButton()==MouseEvent.BUTTON1){
 				if(e.getSource()==pesquisar){
 					dispose();
-    				new Tela_Pesquisa1();				
+    				new Tela_Pesquisa();				
 				}
 
 				if(e.getSource()==venda){

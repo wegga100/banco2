@@ -2,11 +2,14 @@ package View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+<<<<<<< HEAD
 <<<<<<< master
 import javax.swing.table.DefaultTableModel;
 
@@ -15,8 +18,16 @@ import Model.Pedido;
 
 =======
 >>>>>>> 2b47176 weqwe
+=======
+import javax.swing.table.DefaultTableModel;
+
+import Model.Cliente;
+import Model.Pedido;
+
+>>>>>>> branch 'master' of https://github.com/wegga100/banco2.git
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 
 public class Tela_Venda extends JFrame implements ActionListener {
 	
@@ -24,9 +35,9 @@ public class Tela_Venda extends JFrame implements ActionListener {
 	JLabel produto, quantidade, preco, total, totalgeral;
 	JTextField fproduto, fquantidade, fpreco, ftotal, ftotalgeral;
 	private JTable table;
-	private JTable table_1;
 	private JButton btnNewButton;
-	
+	private JTable table_1;
+	JScrollPane scrollPane ;
 	public Tela_Venda() {
 		
 		produto = new JLabel("PRODUTO");
@@ -77,23 +88,23 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		table.setBounds(605, 239, 1, 1);
 		getContentPane().add(table);
 		
-		table_1 = new JTable();
-		table_1.setBounds(20, 106, 1055, 429);
-		getContentPane().add(table_1);
-		
 		btnNewButton = new JButton("ADICIONAR");
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Vaniedson\\Desktop\\Sem t\u00EDtulo-1.png"));
 		btnNewButton.setBounds(971, 59, 104, 36);
 		getContentPane().add(btnNewButton);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setToolTipText("");
+		scrollPane.setBounds(20, 106, 1055, 423);
+		getContentPane().add(scrollPane);
+		
+		table_1 = new JTable();
+		scrollPane.setColumnHeaderView(table_1);
 		setSize(1100, 650);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
-	}
-
-	private void Mai() {
-		new Tela_Venda();
 	}
 
 	@Override
@@ -102,6 +113,7 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		
 	}
 	
+<<<<<<< HEAD
 <<<<<<< master
 	public void montarTabelaCliente(){
 		table_1 = new JTable(new DefaultTableModel(
@@ -136,4 +148,37 @@ public class Tela_Venda extends JFrame implements ActionListener {
 	}
 =======
 >>>>>>> 2b47176 weqwe
+=======
+	public void montarTabelaCliente(){
+		table_1 = new JTable(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+						"NOME", "QUANTIDADE", "VALOR", "TOTAL"
+				}
+				));
+		scrollPane.setViewportView(table_1);
+
+		List<Pedido> pedido = new ArrayList<>();
+		Pedido pe = new Pedido();
+		pe.setId(10);
+
+		pedido.add(pe);
+
+
+		
+
+
+		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
+		model.setRowCount(0);
+		for(Pedido p: pedido){
+			model.addRow(p.getLinhaTable());	
+		}
+
+		int lina = table_1.getSelectedRow();
+		String id = (String) model.getValueAt(lina, 0);
+
+
+	}
+>>>>>>> branch 'master' of https://github.com/wegga100/banco2.git
 }
