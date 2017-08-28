@@ -31,7 +31,7 @@ public class App {
 		 }
 		 
 		 
-		 new Tela_Pesquisa();
+		 new Tela_Menu();
 		 
 
 	}
