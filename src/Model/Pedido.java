@@ -15,6 +15,11 @@ public class Pedido {
 	}
 	
 	
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
+	}
+
+
 	public Pedido(){
 		
 	}
@@ -75,7 +80,12 @@ public class Pedido {
 		this.quantDeProd = quantDeProd;
 	}
 
-	
+	public void valorT(){
+		
+		for(int i = 0; i< quantDeProd.size();i++){
+			valorTotal += quantDeProd.get(i)*prodNoCarrinho.get(i).getPreco();
+		}
+	}
 	
 	
 }

@@ -28,6 +28,13 @@ public class ControleLogin {
 			
 			}
 		});
+		tela.sairButton.addActionListener(new ActionListener(
+				) {
+			public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+			}
+		});
+		
 		
 	}
 }

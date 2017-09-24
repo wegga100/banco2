@@ -100,7 +100,7 @@ public class BancoDados {
 	
 	public void gravarPedido(Pedido ped){
 		try {
-			 String query = "insert into pedido(valor-total,id_Cliente) values('"+ped.getValorTotal()+"','"+ped.getIdCliente()+"');";
+			 String query = "insert into pedido(valor_total,id_Cliente) values("+ped.getValorTotal()+","+ped.getIdCliente()+");";
 			 this.statement.executeUpdate(query);
 			} catch (SQLException e) {
 				System.out.println(e);
@@ -184,18 +184,18 @@ public class BancoDados {
 	}
 	
 	
-	public ArrayList<Produtos> pesquisarProd(String nome){
+	public ArrayList<Produtos> pesquisarProd(){
 		
 		
 		try {
 			ArrayList<Produtos> produtos =  new ArrayList<>();
-			String query = "select * from produto where nome ='"+nome+"';";
+			String query = "select * from produto ;";
 			this.resultSet = this.statement.executeQuery(query);
 			while(this.resultSet.next()){	
 				produtos.add(new Produtos(
 						this.resultSet.getInt("id"),
 						this.resultSet.getString("nome"),
-						this.resultSet.getNString("cod_barras"),
+						this.resultSet.getString("cod_barras"),
 						this.resultSet.getString("validade"), 
 						this.resultSet.getFloat("preço"), 
 						this.resultSet.getInt("quant_estoque"),
@@ -214,21 +214,25 @@ public class BancoDados {
 	}
 
 	public Produtos pesquisarProdCodigo(int cod_barras){
-		
-		
+				
 		try {
 			
-			String query = "select * from produto where cor_barras ='"+cod_barras+"';";
+			String query = "select * from produto where cod_barras ='"+cod_barras+"';";
 			this.resultSet = this.statement.executeQuery(query);
-			return new Produtos(
+			this.resultSet.next();
+			Produtos p =  new Produtos(
 						this.resultSet.getInt("id"),
 						this.resultSet.getString("nome"),
-						this.resultSet.getNString("cod_barras"),
+						this.resultSet.getString("cod_barras"),
 						this.resultSet.getString("validade"), 
 						this.resultSet.getFloat("preço"), 
 						this.resultSet.getInt("quant_estoque"),
 						this.resultSet.getString("descrição"),
 						this.resultSet.getInt("id_seccao"));
+			
+			return p;
+			
+			
 			
 		} catch (SQLException e) {
 			System.err.println("Erro : "+e);
@@ -242,13 +246,15 @@ public class BancoDados {
 	
 	public void retirarDoEstoque(String cod_barras){
 		
-		String query = "update produto set quant_estoque = quant_estoque-1 where cod_barras = "+cod_barras+";";
+		String query = "update produto set quant_estoque = quant_estoque-1 where cod_barras = '"+cod_barras+"';";
 		
 		try {
-			this.statement.executeQuery(query);
 			
+			statement= connection.prepareStatement(query);
+		//	statement.executeQuery(query);
 			
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -12,9 +12,10 @@ import javax.swing.JTextField;
 
 import javax.swing.table.DefaultTableModel;
 
+import App.App;
 import Model.Cliente;
 import Model.Pedido;
-
+import Model.Produtos;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -24,12 +25,13 @@ import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 
-public class Tela_Venda extends JFrame implements ActionListener {
+public class Tela_Venda extends JFrame  {
 	
 	JButton vebsalvar, vebcancelar;
 	JLabel produto, quantidade, preco, total, totalgeral;
 	JTextField fproduto, fquantidade, fpreco, ftotal, ftotalgeral;
 	private JTable table;
+	DefaultTableModel modelo =  new DefaultTableModel(); 
 	private JButton btnNewButton;
 	private JTable table_1;
 	JScrollPane scrollPane ;
@@ -46,9 +48,7 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		totalgeral = new JLabel("TOTAL");
 		ftotalgeral = new JTextField(20);
 		vebsalvar = new JButton("FINALIZAR");
-		vebsalvar.addActionListener(this);
 		vebcancelar = new JButton("CANCELAR");
-		vebcancelar.addActionListener(this);
 						
 		getContentPane().add(produto);
 		getContentPane().add(fproduto);
@@ -101,76 +101,123 @@ public class Tela_Venda extends JFrame implements ActionListener {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
+	public JButton getVebsalvar() {
+		return vebsalvar;
+	}
+	public void setVebsalvar(JButton vebsalvar) {
+		this.vebsalvar = vebsalvar;
+	}
+	public JButton getVebcancelar() {
+		return vebcancelar;
+	}
+	public void setVebcancelar(JButton vebcancelar) {
+		this.vebcancelar = vebcancelar;
+	}
+	public JLabel getProduto() {
+		return produto;
+	}
+	public void setProduto(JLabel produto) {
+		this.produto = produto;
+	}
+	public JLabel getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(JLabel quantidade) {
+		this.quantidade = quantidade;
+	}
+	public JLabel getPreco() {
+		return preco;
+	}
+	public void setPreco(JLabel preco) {
+		this.preco = preco;
+	}
+	public JLabel getTotal() {
+		return total;
+	}
+	public void setTotal(JLabel total) {
+		this.total = total;
+	}
+	public JLabel getTotalgeral() {
+		return totalgeral;
+	}
+	public void setTotalgeral(JLabel totalgeral) {
+		this.totalgeral = totalgeral;
+	}
+	public JTextField getFproduto() {
+		return fproduto;
+	}
+	public void setFproduto(JTextField fproduto) {
+		this.fproduto = fproduto;
+	}
+	public JTextField getFquantidade() {
+		return fquantidade;
+	}
+	public void setFquantidade(JTextField fquantidade) {
+		this.fquantidade = fquantidade;
+	}
+	public JTextField getFpreco() {
+		return fpreco;
+	}
+	public void setFpreco(JTextField fpreco) {
+		this.fpreco = fpreco;
+	}
+	public JTextField getFtotal() {
+		return ftotal;
+	}
+	public void setFtotal(JTextField ftotal) {
+		this.ftotal = ftotal;
+	}
+	public JTextField getFtotalgeral() {
+		return ftotalgeral;
+	}
+	public void setFtotalgeral(JTextField ftotalgeral) {
+		this.ftotalgeral = ftotalgeral;
+	}
+	public JTable getTable() {
+		return table;
+	}
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	public JButton getBtnNewButton() {
+		return btnNewButton;
+	}
+	public void setBtnNewButton(JButton btnNewButton) {
+		this.btnNewButton = btnNewButton;
+	}
+	public JTable getTable_1() {
+		return table_1;
+	}
+	public void setTable_1(JTable table_1) {
+		this.table_1 = table_1;
+	}
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+	public DefaultTableModel getModelo() {
+		return modelo;
+	}
+	public void setModelo(DefaultTableModel modelo) {
+		this.modelo = modelo;
+	}
+
 	
-	public void montarTabelaVenda(){
-		table_1 = new JTable(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-						"NOME", "QUANTIDADE", "VALOR", "TOTAL"
-				}
-				));
-		scrollPane.setViewportView(table_1);
-
-		List<Pedido> pedido = new ArrayList<>();
-		Pedido pe = new Pedido();
-		pe.setId(10);
-
-		pedido.add(pe);
-
+	public void criarTabela(){
+		table = new JTable(modelo);
+		modelo.addColumn("nome");
+		modelo.addColumn("Codigo Barras");
+		modelo.addColumn("quantidade");
+		modelo.addColumn("valor");
+		
+		table.getColumnModel().getColumn(0).setPreferredWidth(25);
+		table.getColumnModel().getColumn(1).setPreferredWidth(8);
+		table.getColumnModel().getColumn(2).setPreferredWidth(7);
 	
-		
-
-
-		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
-		model.setRowCount(0);
-		for(Pedido p: pedido){
-			model.addRow(p.getLinhaTable());	
-		}
-
-		int lina = table_1.getSelectedRow();
-		String id = (String) model.getValueAt(lina, 0);
-
-
+	
 	}
-
-	public void montarTabelaCliente(){
-		table_1 = new JTable(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-						"NOME", "QUANTIDADE", "VALOR", "TOTAL"
-				}
-				));
-		scrollPane.setViewportView(table_1);
-
-		List<Pedido> pedido = new ArrayList<>();
-		Pedido pe = new Pedido();
-		pe.setId(10);
-
-		pedido.add(pe);
-
-
-		
-
-
-		DefaultTableModel model = (DefaultTableModel) table_1.getModel();
-		model.setRowCount(0);
-		for(Pedido p: pedido){
-			model.addRow(p.getLinhaTable());	
-		}
-		
-		
-
-		int lina = table_1.getSelectedRow();
-		String id = (String) model.getValueAt(lina, 0);
-
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
 }

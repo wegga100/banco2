@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import App.App;
+import Controle.ControleVenda;
 
 public class Tela_Menu extends JFrame {
 
@@ -117,12 +118,12 @@ public class Tela_Menu extends JFrame {
 			if(e.getButton()==MouseEvent.BUTTON1){
 				if(e.getSource()==pesquisar){
 					dispose();
-    				new Tela_Pesquisa();				
+    				new Tela_Relatorio();			
 				}
 
 				if(e.getSource()==venda){
 					dispose();
-					new Tela_Venda();
+					new ControleVenda(new Tela_Venda());
 
 				}
 
